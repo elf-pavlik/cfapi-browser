@@ -1,7 +1,7 @@
 $(function(){
 
   var entryPoint = 'http://codeforamerica.org/api/projects';
-  var graph = levelgraphJSONLD(levelgraph('abcdef'));
+  var graph = levelgraphJSONLD(levelgraph('abcdefg'));
 
   jsonld_macros.registerAPI({
     "http://codeforamerica.org/api/projects/*": {
@@ -90,10 +90,15 @@ $(function(){
     }).catch(function(err){ console.log(err); });
   };
 
+  var countTripples = function(){
+    graph.get({}, function(err, tripples){ console.log(tripples.length); });
+  };
+
   // debug
   window.app = {
     graph: graph,
-    cache: cache
+    cache: cache,
+    countTripples: countTripples
   };
 
 });
